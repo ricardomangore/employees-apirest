@@ -1,11 +1,11 @@
-const connectDB = require("./db/mongoConnect");
+const dbConnect = require("./db/mongoConnect");
 const initServer = require("./server");
 
-async function main() {
-    await connectDB();
-    await initServer();
+
+const main = async () => {
+   await dbConnect();
+   await initServer();
 }
 
-main().catch(err => console.log(err));
 
-
+main().catch( e => { console.log(e);});

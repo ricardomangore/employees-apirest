@@ -1,10 +1,13 @@
 const mongoose = require('mongoose');
 
-const connectDB = async () => {
-    await mongoose.connect('mongodb://127.0.0.1:27017/rhsystem');
+const dbConnect = async () => {
+    
+    await mongoose.connect('mongodb://127.0.0.1:27017/recursos_humanos');
+
 }
 
-module.exports = connectDB;
+module.exports =  dbConnect;
+
 
 
 
