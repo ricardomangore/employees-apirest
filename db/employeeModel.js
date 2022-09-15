@@ -2,6 +2,7 @@ const {Schema, model} = require('mongoose');
 
 const employeeShema = Schema({
     name: String,
+    nss: Number,
     salary: Number
 });
 
