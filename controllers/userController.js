@@ -20,9 +20,7 @@ const userPostController = async (req, res) => {
 
     const u = await user.save();
     console.log(u);
-    res.json({
-        msg: 'Ususario registrado con exito',
-    });
+    res.json(user);
 }
 
 const userPutController = (req, res, next) => {
