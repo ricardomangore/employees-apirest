@@ -1,11 +1,13 @@
 const express = require('express');
 const employeeRoute = require('./routes/employees.route');
+const loginRoute = require('./routes/login.route');
 const userRoute = require('./routes/users.route');
 const port = 3030;
 const app = express();
 
 const apiEmployeesPath = '/api/employees';
 const apiUsersPath = '/api/users';
+const loginPath = '/login';
 
 const initServer = async () => {
     //Registra Middlewares
@@ -16,6 +18,8 @@ const initServer = async () => {
     //Registramos la ruta en la aplicación
     app.use(apiEmployeesPath, employeeRoute);
     app.use(apiUsersPath, userRoute);
+    app.use(loginPath, loginRoute);
+
     
     
     
