@@ -1,3 +1,5 @@
+
+require('dotenv').config();
 const dbConnect = require("./db/mongoConnect");
 const initServer = require("./server");
 

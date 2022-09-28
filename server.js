@@ -2,7 +2,7 @@ const express = require('express');
 const employeeRoute = require('./routes/employees.route');
 const loginRoute = require('./routes/login.route');
 const userRoute = require('./routes/users.route');
-const port = 3030;
+const port = process.env.PORT;
 const app = express();
 
 const apiEmployeesPath = '/api/employees';

@@ -4,6 +4,8 @@ const Employee = require('../db/employeeModel');
 const { check } = require('express-validator');
 const employeeController = require('../controllers/employeeController');
 const employeeValidator = require('../validators/employeeValidator');
+const custom_validator = require('../helpers/validator');
+const jwt_validator = require('../helpers/jwt_validator');
 
 
 
@@ -12,21 +14,26 @@ const employeeRoute = Router();
 /**
  * Retorna todos los empleados
  */
-employeeRoute.get('/:nss',async (req, res) =>{
-    console.log('Desde el GET');
-    const employees = await Employee.findOne({ nss: req.params.nss});
-    console.log(employees);
-    res.json({
-        employees
-    });
+employeeRoute.get('/:nss',
+    jwt_validator,
+    async (req, res) =>{
+        console.log(`El usuario ${req.mail} esta logueado`);
+        console.log('Desde el GET');
+        const employees = await Employee.findOne({ nss: req.params.nss});
+        console.log(employees);
+        res.json({
+            employees
+        });
 });
 
 /**
  * Registra un nuevo empleado en la BD
  */
 employeeRoute.post('/', 
+    jwt_validator,
     check('salary', 'No debe ser vacio').notEmpty(),
     check('nss').custom(employeeValidator),
+    custom_validator,
     employeeController);
 
 /**
