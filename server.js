@@ -8,6 +8,7 @@ const app = express();
 const apiEmployeesPath = '/api/employees';
 const apiUsersPath = '/api/users';
 const loginPath = '/login';
+const readmePath = '/readme';
 
 const initServer = async () => {
     //Registra Middlewares
@@ -19,6 +20,9 @@ const initServer = async () => {
     app.use(apiEmployeesPath, employeeRoute);
     app.use(apiUsersPath, userRoute);
     app.use(loginPath, loginRoute);
+    app.get(readmePath, (req, res) => {
+        res.send('Hola README');
+    });
 
     
     
